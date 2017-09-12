@@ -5,3 +5,9 @@
  * Author       :   Julien Bongars
  * Description  :   Angular Application Module for customers application
  */
+
+"use strict";
+
+(function () {
+    angular.module("myApp", []);
+})()
