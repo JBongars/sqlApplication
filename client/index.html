@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Customer Info</title>
+
+    <!--Bower Components-->
+    <!--Bootstrap--><link type="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    
+    <!--Style-->
+    <link type="stylesheet" href="css/style.css" />
+
+</head>
+
+<body class="container-fluid">
+    <header class="well">
+        <h1>My customer App</h1>
+    </header>
+    <div class="col-lg-6 col-sm-12 listCustomers">
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="customer in customers" class="table-content">
+    </div>
+
+    <div class="col-lg-6 col-sm-12 detailCustomers">
+    </div>
+</body>
+
+<!--Bower Components -->
+<!--Angular--><script src="bower_components/angular/angular.min"></script>
+<!--JQuery--><script src="bower_components/jquery/dis/jquery.min"></script>
+<!--Bootstrap--><script src="bower_components/bootstrap/dist/js/bootstrap.min"></script>
+
+<!--Scripts-->
+<script src="js/app"></script>
+<script src="js/ctrl"></script>
+<script src="js/db.scv"></script>
+
+</html>
