@@ -1,0 +1,27 @@
+{
+  "name": "customers",
+  "description": "Simple application to return list of customers",
+  "main": "server/app.js",
+  "authors": [
+    "Julien Bongars"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "iss",
+    "fsf",
+    "customer",
+    "app"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.6",
+    "bootstrap": "^3.3.7"
+  }
+}
