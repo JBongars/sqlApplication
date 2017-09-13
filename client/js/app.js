@@ -9,5 +9,6 @@
 "use strict";
 
 (function () {
+    console.log("app.js hit");
     angular.module("myApp", []);
 })()

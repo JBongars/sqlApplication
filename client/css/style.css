@@ -1,0 +1,9 @@
+select {
+    width: 100%;
+}
+
+.listEntrys {
+    max-height: 80vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}

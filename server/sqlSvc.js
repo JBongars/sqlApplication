@@ -22,16 +22,14 @@ var pool = sql.createPool({
 
 const makeSQLQuery = function (SQLquery, pool) {
     return function () {
-
-        console.log("\n\n\n>> SQLquery >> ", SQLquery);
-
+        
         //get parameters
         var params = [];
         for (var i in arguments) {
             params.push(arguments[i]);
         }
 
-        console.log(params);
+        console.log(">> SQLquery >> ", SQLquery, " >> Params >> ", params);
 
         //SQL call as promise
         var p = new Promise(function (resolve, reject) {

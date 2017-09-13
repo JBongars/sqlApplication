@@ -5,68 +5,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Customer Info</title>
+  <title>Entry Info</title>
 
   <!--Bower Components-->
-  <link type="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 
   <!--Style-->
-  <link type="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 
 </head>
 
-<body class="container-fluid" ng-controller="MyCtrl as ctrl">
+<body ng-cloak>
+  <div class="container-fluid" ng-controller="MyCtrl as ctrl">
 
-  <header class="well">
-    <h1>My customer App</h1>
-  </header>
-
-  <div class="contentRow row">
-
-    <!--Table goes here-->
-    <div class="col-lg-6 col-sm-12 listCustomers">
-      <table>
-        <tr>
-          <th ng-repeat="i in ctrl.max-sql-table-col">
-            <select name="Col{{i}}" id="Col{{i}}" ng-model="ctrl.table-keys[i]">
-            <option ng-repeat="col in ctrl.data-keys" ng-value="col">{{col}}</option>
-          </select>
-          </th>
-        </tr>
-        <tr ng-repeat="customer in customers" class="table-content">
-          <td ng-repeat="i in ctrl.max-sql-table-col">
-            {{customer[ctrl.table-keys[i]]}}
-          </td>
-        </tr>
+    <div class="row well">
+        <h1>SQL Table App</h1>
     </div>
 
-    <!--Details Sheet-->
-    <div class="col-lg-6 col-sm-12 detailCustomersWrapper">
-      <div class="detailCustomers">
-        <table>
-          <tr ng-repeat="col in ctrl.dataKeys">
-            <th>{{col}}</th>
-            <th>{{ctrl.data[col]}}</th>
+    <div class="contentRow row">
+      
+      <!--Details Sheet-->
+      <div class="col-lg-3 col-sm-12 detailEntrysWrapper">
+          <div class="detailEntrys">
+            <img src="https://i.ytimg.com/vi/rb8Y38eilRM/maxresdefault.jpg" width="200px">
+            <table class="table table-condensed">
+              <tr ng-repeat="col in ctrl.dataKeys">
+                <th>{{col}}</th>
+                <td>{{ctrl.currentEntry[col]}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      <!--Table goes here-->
+      <div class="col-lg-9 col-sm-12 listEntrys">
+        <table class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th ng-repeat="col in ctrl.tableKeysPos">
+              <select name="col" class="col-select" ng-model="ctrl.tableKeys[col]">
+                <option ng-repeat="option in ctrl.dataKeys" ng-value="option">{{option}}</option>
+              </select>
+            </th>
           </tr>
+        </thead>
+        <tbody>
+
+          <tr ng-repeat="Entry in ctrl.sqlData" class="table-content">
+            <td ng-repeat="col in ctrl.tableKeys" ng-click="ctrl.currentEntry = Entry">
+              {{Entry[col]}}
+            </td>
+          </tr>
+        </tbody>
         </table>
       </div>
+
+      
+    </div>
+
+    <div class="row">
+      <!--Insert footer here-->
     </div>
   </div>
-
-  <footer class="row">
-    <!--Insert footer here-->
-  </footer>
-
 </body>
 
 <!--Bower Components -->
-<script src="bower_components/angular/angular.min"></script>
-<script src="bower_components/jquery/dis/jquery.min"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min"></script>
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!--Scripts-->
-<script src="js/app"></script>
-<script src="js/ctrl"></script>
-<script src="js/db.scv"></script>
+<script src="/js/app.js"></script>
+<script src="/js/ctrl.js"></script>
+<script src="/js/db.svc.js"></script>
 
 </html>

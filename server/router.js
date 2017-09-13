@@ -15,7 +15,7 @@ module.exports = function (app, sqlSvc) {
         console.log("touched");
 
         sqlSvc.makeFilmQuery().then(function (result) {
-            console.info(result);
+            //console.info(result);
             res.status(200);
             res.json(result);
 
@@ -47,7 +47,7 @@ module.exports = function (app, sqlSvc) {
         var name = req.params.name;
 
         sqlSvc.makeFilmQuerybyNAME(name).then(function (result) {
-            console.info(result);
+            //console.info(result);
             res.status(200);
             res.json(result);
 

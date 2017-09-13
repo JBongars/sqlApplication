@@ -9,34 +9,52 @@
 "use strict";
 
 (function () {
-    Angular.module("myApp").controller("MyCtrl", MyCtrl)
+    console.log("controller hit");
+    angular.module("myApp").controller("MyCtrl", MyCtrl)
 
-    myCtrl.$inject = ["$http"];
+    MyCtrl.$inject = ["$http"];
 
-    MyCtrl = function () {
-        this = myCtrl; //vm
+    function MyCtrl($http) {
+        var myCtrl = this; //vm
 
-        myCtrl.data = [];
+        //myCtrl.data = [];
+        myCtrl.sqlData = {};
         myCtrl.maxSqlTableCol = 5;
 
-        myCtrl.getTableCols = function () {
-            result = [];
-            for (var i = 0; i < myCtrl.sqlTableCol; i++) {
-                result.push(i);
-            }
-            return result;
-        }
-
-        myCtrl.getDataCols = function () {
-            return Object.keys(myCtrl.data);
-        }
-
-        //init
+        //initiate program
         myCtrl.init = function () {
             console.log("initializing..");
-            myCtrl.dataKeys = myCtrl.getTableCols();
-        }
 
+            $http.get('/films').then(function (result) {
+                console.log(result);
+
+                //Get Data, Data keys
+                myCtrl.sqlData = result.data;
+                myCtrl.dataKeys = Object.keys(result.data[0]);
+
+                //Get Table Keys
+                myCtrl.tableKeys = [];
+                myCtrl.tableKeysPos = [];
+                for (var i = 0; i < myCtrl.maxSqlTableCol; i++) {
+                    myCtrl.tableKeys.push(myCtrl.dataKeys[i]);
+                    myCtrl.tableKeysPos.push(i);
+                }
+
+                //Get Details for current Entry
+                myCtrl.currentEntry = myCtrl.sqlData[0];
+
+                //console.log("table keys: ", myCtrl.tableKeys);
+                console.log("data>> ", myCtrl.sqlData);
+
+            }).catch(function (e) {
+                console.log(e);
+            })
+        }
+        myCtrl.init();
+
+        myCtrl.colChange = function(input){
+            console.log(input);
+        }
     };
 
 })()
